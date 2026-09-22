@@ -1,0 +1,52 @@
+{
+  "name": "quiz-submission-manager-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quiz 提交管家桌面版",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "cn.superymr.quizmanager",
+    "productName": "Quiz提交管家",
+    "asar": true,
+    "electronDownload": {
+      "cache": "F:/code/Codex/2026-09-19/new-chat/desktop/.electron-cache"
+    },
+    "files": [
+      "main.cjs",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../outputs/quiz-local/server.mjs",
+        "to": "quiz-app/server.mjs"
+      },
+      {
+        "from": "../outputs/quiz-local/public",
+        "to": "quiz-app/public"
+      }
+    ],
+    "directories": {
+      "output": "../outputs/quiz-desktop"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "Quiz提交管家-${version}-便携版.${ext}"
+    },
+    "portable": {
+      "artifactName": "Quiz提交管家-${version}-便携版.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^26.0.12"
+  }
+}
